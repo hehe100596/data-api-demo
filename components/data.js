@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Data() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [chain, setChain] = useState("ethereum");
   const [address, setAddress] = useState(
     "0x39ee2c7b3cb80254225884ca001f57118c8f21b6"
@@ -54,18 +54,56 @@ function Data() {
         </label>
         <button type="submit">Submit</button>
       </form>
+      <h2>LEADERBOARD</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Type</th>
+            <th>Token ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.decoded.from}</td>
+                <td>{item.decoded.to}</td>
+                <td>{`${item.decoded.type} ${item.decoded.subtype}`}</td>
+                <td>{item.decoded.tokenId}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
       <style jsx>{`
         form {
           display: flex;
           flex-direction: column;
+          margin: auto;
+          margin-bottom: 100px;
         }
         form,
         input,
         select {
           width: 300px;
         }
-        button {
+        button,
+        table {
           margin-top: 50px;
+        }
+        table {
+          width: 1000px;
+          border: 2px solid;
+        }
+        h2,
+        tr {
+          text-align: center;
+        }
+        table,
+        th,
+        td {
+          border: 1px solid;
         }
       `}</style>
     </div>
