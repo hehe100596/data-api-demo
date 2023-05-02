@@ -54,14 +54,13 @@ function Data() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <h2>LEADERBOARD</h2>
+      <h2>ITEM MOVEMENTS</h2>
       <table>
         <thead>
           <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Type</th>
-            <th>Token ID</th>
+            <th>From player</th>
+            <th>To player</th>
+            <th>Item ID</th>
           </tr>
         </thead>
         <tbody>
@@ -70,7 +69,6 @@ function Data() {
               <tr key={index}>
                 <td>{item.decoded.from}</td>
                 <td>{item.decoded.to}</td>
-                <td>{`${item.decoded.type} ${item.decoded.subtype}`}</td>
                 <td>{item.decoded.tokenId}</td>
               </tr>
             ))}
